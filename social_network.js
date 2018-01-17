@@ -39,20 +39,83 @@ function whofollows()
 
     for (x=0; x<data[word].follows.length; x++)
     {
-      for (y=0; y<Object.keys(data).length; y++)
-      {
-        if (data[word].follows[x] === tostring(word))
-        {
-            console.log("hello");
+      var keyFollows = data[word].follows[x];
+      console.log(data[keyFollows].name);
 
-
-        }
     }
-
-
 
   }
 
 }
 
-whofollows();
+
+
+function whofollowsmost()
+{
+  var y = "";
+  var z = 0;
+
+  for (word in data)
+  {
+     var x = data[word].follows.length;
+     {
+      if(x > z)
+      {
+        y = data[word].name;
+        z = x;
+      }
+     }
+  }
+
+  console.log(y +" has most friends");
+
+}
+
+
+
+function whoisfollowed()
+{
+  var obj={};
+
+  for(word in data)
+  {
+    for(x=0; x<data[word].follows.length; x++)
+    {
+
+      if(obj[data[word].follows[x]] === undefined)
+      {
+        obj[data[word].follows[x]] = 1;
+      }
+      else
+      {
+        obj[data[word].follows[x]]++;
+      }
+
+    }
+
+  }
+
+  var y = "";
+  var z = 0;
+
+  for (word in obj)
+  {
+     var x = obj[word];
+     {
+      if(x > z)
+      {
+        y = word;
+        z = x;
+      }
+     }
+  }
+
+  console.log(data[y].name +" has most friends");
+
+}
+
+whoisfollowed();
+
+
+
+
